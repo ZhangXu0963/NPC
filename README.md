@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a PyTorch implementation for the paper ["Negative Pre-aware for Noisy Cross-modal Matching"](http://arxiv.org/abs/2312.05777). Our method **NPC** is built on top of the [CLIP](https://arxiv.org/abs/2103.00020) in PyTorch for end-to-end Image-text Matching. 
+This is a PyTorch implementation for the AAAI 2024 paper ["Negative Pre-aware for Noisy Cross-modal Matching"](http://arxiv.org/abs/2312.05777). Our method **NPC** is built on top of the [CLIP](https://arxiv.org/abs/2103.00020) in PyTorch for end-to-end Image-text Matching. 
 <!-- Thanks to this [project](https://github.com/leolee99/CLIP_ITM) for offering a basic fine-tuning framework of CLIP. -->
 
 <img src = "./assets/introduction.png" width = "100%">
@@ -67,39 +67,7 @@ The final data directory tree should be:
 ```
 
 ## Pre-trained Models and Evaluation
-You can download pre-trained NPC models and fine-tuned CLIP models from the this [link](https://drive.google.com/drive/folders/12ZW5CGvzfDMU_NDlx44HZS3cyVAlgtq5?usp=sharing).
-
-<table>
-   <tr> <td rowspan="2", align="center">Method</td> 
-   <td colspan="4", align="center">MSCOCO</td><td colspan="4", align="center">Flickr30K</td><td align="center">CC120K</td> 
-   </tr>
-   <tr align="center"> <td>0%</td><td>20%</td><td>40%</td><td>60%</td> <td>0%</td><td>20%</td><td>40%</td><td>60%</td><td>-</td> </tr>
-   <tr> <td>NPC (ours)</td>
-        <td>npc_coco_0.pt</td>
-        <td>npc_coco_20.pt</td>
-        <td>npc_coco_40.pt</td>
-        <td>npc_coco_60.pt</td>
-        <td>npc_f30k_0.pt</td>
-        <td>npc_f30k_20.pt</td> 
-        <td>npc_f30k_40.pt</td>
-        <td>npc_f30k_60.pt</td>
-        <td>npc_cc120k.pt</td>
-   </tr>
-   <tr>
-        <td>CLIP (baseline)</td>
-        <td>clip_coco_0.pt</td>
-        <td>clip_coco_20.pt</td>
-        <td>clip_coco_40.pt</td>
-        <td>clip_coco_60.pt</td>
-        <td>clip_f30k_0.pt</td>
-        <td>clip_f30k_20.pt</td> 
-        <td>clip_f30k_40.pt</td>
-        <td>clip_f30k_60.pt</td>
-        <td>clip_cc120k.pt</td> 
-   </tr>
-</table>
-
-Save the pretrained models in folder `./checkpoint`, and eval the models via the following command. For example, eval the models trained on MSCOCO with 60% noise.
+You can download pre-trained NPC models and fine-tuned CLIP models from the this [link](https://drive.google.com/drive/folders/12ZW5CGvzfDMU_NDlx44HZS3cyVAlgtq5?usp=sharing). Save the pretrained models in folder `./checkpoint`, and eval the models via the following command. For example, eval the models trained on MSCOCO with 60% noise.
 
 ```bash
 python main_NPC.py --eval --resume /AAAI24-NPC/checkpoint/npc_coco_60.pt --dataset_root /AAAI24-NPC/dataset/MSCOCO --dataset coco
