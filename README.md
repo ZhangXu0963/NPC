@@ -217,9 +217,15 @@ python main_CLIP.py --batch_size 256 --epochs 5 --lr 5e-7 --vision_model ViT-B/3
 
 ## Reference
 If our proposed NPC is helpful for you, welcome to cite the following paper. :) 
+
 @inproceedings{NPC,
+
   author    = {Xu Zhang and Hao Li and Mang Ye},
+  
   title     = {Negative Pre-aware for Noisy Cross-modal Matching},
+  
   booktitle = {AAAI},
+  
   year      = {2024}
+  
 }
