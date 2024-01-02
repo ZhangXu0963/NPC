@@ -2,10 +2,13 @@
 
 This is a PyTorch implementation for the AAAI 2024 paper ["Negative Pre-aware for Noisy Cross-modal Matching"](http://arxiv.org/abs/2312.05777). Our method **NPC** is built on top of the [CLIP](https://arxiv.org/abs/2103.00020) in PyTorch for end-to-end Image-text Matching. 
 <img src = "./assets/intro1.png" width = "80%">
+
 In *Step 1*, we calculate the negative impact of each sample via the siamese model *A'* of base model *A*.
 <img src = "./assets/intro2.png" width = "80%">
+
 In *Step 2*, we train the base model *A* with the re-weight samples and memory bank.
 <img src = "./assets/intro3.png" width = "50%">
+
 The proposed NPC achieves much better accuracy (higher R@1) and higher robustness (lower variance among R@1).
 <img src = "./assets/intro4.png" width = "60%">
 
