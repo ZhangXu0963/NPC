@@ -1,10 +1,13 @@
 ## Introduction
 
 This is a PyTorch implementation for the AAAI 2024 paper ["Negative Pre-aware for Noisy Cross-modal Matching"](http://arxiv.org/abs/2312.05777). Our method **NPC** is built on top of the [CLIP](https://arxiv.org/abs/2103.00020) in PyTorch for end-to-end Image-text Matching. 
-<!-- Thanks to this [project](https://github.com/leolee99/CLIP_ITM) for offering a basic fine-tuning framework of CLIP. -->
-
-<img src = "./assets/introduction.png" width = "100%">
-
+<img src = "./assets/intro1.png" width = "80%">
+In *Step 1*, we calculate the negative impact of each sample via the siamese model *A'* of base model *A*.
+<img src = "./assets/intro2.png" width = "80%">
+In *Step 2*, we train the base model *A* with the re-weight samples and memory bank.
+<img src = "./assets/intro3.png" width = "50%">
+The proposed NPC achieves much better accuracy (higher R@1) and higher robustness (lower variance among R@1).
+<img src = "./assets/intro4.png" width = "60%">
 
 ## Requirements
 * python 3.7
@@ -24,22 +27,22 @@ We unified the images' name format of the MSCOCO dataset for easier use. You can
 * **Flickr30K**
 [(Flickr30K)](https://shannon.cs.illinois.edu/DenotationGraph/data/index.html).
 * **CC120K**
-We tested the proposed method on real-world dataset [Conceptual Captions](http://ai.google.com/research/ConceptualCaptions). Since the full dataset is too large, we reconstruct the CC120K, including 118,851 images for training, 1,000 for validation, and 1,000 for testing. Since the file is too large to upload, you can drop me an email to get the whole dataset.
+We tested the proposed method on the real-world dataset [Conceptual Captions](http://ai.google.com/research/ConceptualCaptions). Since the full dataset is too large, we randomly selected a subset of Conceptual Captions, named CC120K, including 118,851 images for training, 1,000 for validation, and 1,000 for testing. Since the file is too large to upload, you can drop me an email to get the whole dataset.
 
-#### Construct Noisy Dataset
+#### Construct Noisy Datasets
 We constructed noise by randomly shuffling some captions of the images. 
 
-You can obtain your own noisy dataset using `construct_noise.py`. And we also integrated this part of the code in `data.py`. The noisy dataset will be automatically constructed and saved during training when it doesn't exist. 
+You can obtain your noisy dataset using `construct_noise.py`. And we also integrated this part of the code in `data.py`. The noisy dataset will be automatically constructed and saved during training when it doesn't exist. 
 
 Since there are around 3%-20% incorrect annotations existing in the real-world dataset Conceptual Captions, we did not create noisy samples manually.
 
 #### Frozen Memory Bank
-We provide frozen Memory Bank that appeared in the paper for the datasets with different noise ratio . If you want to update them during training, please use `get_memorybank.py`.
+We provide frozen the Memory Bank that appeared in the paper for the datasets with different noise ratios. If you want to update them during training, please use `get_memorybank.py`.
 
 #### Note!
-If you want to use your own noisy dataset for training, the Memory Bank should also be rebuilt. You can construct noise dataset by `construct_noise.py`, and obtain the Memory Bank by `get_memorybank.py`.
+If you want to use your own noisy dataset for training, the Memory Bank should also be rebuilt. You can construct the noise dataset by `construct_noise.py`, and obtain the Memory Bank by `get_memorybank.py`.
 
-#### Annotation DownLoad Link
+#### Download Link
 * [MSCOCO](https://drive.google.com/drive/folders/1VULI0Pxa4Turimkndpb7LoXP34wEGmtS?usp=sharing)
 * [Flickr30K](https://drive.google.com/drive/folders/1VULI0Pxa4Turimkndpb7LoXP34wEGmtS?usp=sharing)
 * [CC120K](https://drive.google.com/drive/folders/1VULI0Pxa4Turimkndpb7LoXP34wEGmtS?usp=sharing)
@@ -67,13 +70,15 @@ The final data directory tree should be:
 ```
 
 ## Pre-trained Models and Evaluation
-You can download pre-trained NPC models and fine-tuned CLIP models from the this [link](https://drive.google.com/drive/folders/12ZW5CGvzfDMU_NDlx44HZS3cyVAlgtq5?usp=sharing). Save the pretrained models in folder `./checkpoint`, and eval the models via the following command. For example, eval the models trained on MSCOCO with 60% noise.
+You can download pre-trained NPC models and fine-tuned CLIP models from this [link](https://drive.google.com/drive/folders/12ZW5CGvzfDMU_NDlx44HZS3cyVAlgtq5?usp=sharing).
+
+Save the pre-trained models in folder `./pre-trained_models`, and evaluate the models via the following command. For example, evaluate the models trained on MSCOCO with 60% noise.
 
 ```bash
-python main_NPC.py --eval --resume /AAAI24-NPC/checkpoint/npc_coco_60.pt --dataset_root /AAAI24-NPC/dataset/MSCOCO --dataset coco
+python main_NPC.py --eval --resume /AAAI24-NPC/pre-trained_models/npc_coco_60.pt --dataset_root /AAAI24-NPC/dataset/MSCOCO --dataset coco
 ```
 ```bash
-python main_CLIP.py --eval --resume /AAAI24-NPC/checkpoint/clip_coco_60.pt --dataset_root /AAAI24-NPC/dataset/MSCOCO --dataset coco
+python main_CLIP.py --eval --resume /AAAI24-NPC/pre-trained_models/clip_coco_60.pt --dataset_root /AAAI24-NPC/dataset/MSCOCO --dataset coco
 ```
 * Experiment results on MSCOCO 1K and 5K.
 <table>
@@ -171,23 +176,20 @@ python main_CLIP.py --eval --resume /AAAI24-NPC/checkpoint/clip_coco_60.pt --dat
 
 ## Training
 **For training NPC**
-
-You can train new model via the following commands. Before training, you can read the `params.py` carefully to check your parameter setting.
+You can train a new model via the following command. Before training, you can read the `params.py` carefully to check your parameter setting.
 
 ```bash
 python main_NPC.py --batch_size 256 --epochs 5 --lr 2e-7 --vision_model ViT-B/32 --noise_ratio ${NOISE RATIO} --dataset_root ${YOUR PATH} --dataset coco --checkpoint_path ${YOUR PATH}
 ```
 
 **For training CLIP**
-
 Thanks to this [project](https://github.com/leolee99/CLIP_ITM) for providing a basic fine-tuning framework of CLIP. We have improved the code of the data loading process and the model evaluation. You can fine-tune the CLIP via the following command.
 ```bash
 python main_CLIP.py --batch_size 256 --epochs 5 --lr 5e-7 --vision_model ViT-B/32 --noise_ratio ${NOISE RATIO} --dataset_root ${YOUR PATH} --dataset coco --checkpoint_path ${YOUR PATH}
 ```
 
 ## Reference
-If our proposed NPC is helpful for you, welcome to cite the following paper. : ) 
-
+If our proposed NPC is helpful for you, welcome to cite the following paper. :) 
 @inproceedings{NPC,\
   author    = {Xu Zhang and Hao Li and Mang Ye},\
   title     = {Negative Pre-aware for Noisy Cross-modal Matching},\
