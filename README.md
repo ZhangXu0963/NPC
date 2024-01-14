@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a PyTorch implementation for the AAAI 2024 paper ["Negative Pre-aware for Noisy Cross-modal Matching"](http://arxiv.org/abs/2312.05777). Our method **NPC** is built on top of the [CLIP](https://arxiv.org/abs/2103.00020) in PyTorch for end-to-end Image-text Matching. 
+This is a PyTorch implementation for the AAAI 2024 paper ["Negative Pre-aware for Noisy Cross-Modal Matching"](http://arxiv.org/abs/2312.05777). Our method **NPC** is built on top of the [CLIP](https://arxiv.org/abs/2103.00020) in PyTorch for end-to-end Image-text Matching. 
 <img src = "./assets/intro1.png" width = "80%">
 
 In *Step 1*, we calculate the negative impact of each sample via the siamese model *A'* of base model *A*.
@@ -196,7 +196,7 @@ If our proposed NPC is helpful for you, welcome to cite the following paper. :sm
 
 @inproceedings{NPC,\
   author    = {Xu Zhang and Hao Li and Mang Ye},\
-  title     = {Negative Pre-aware for Noisy Cross-modal Matching},\
+  title     = {Negative Pre-aware for Noisy Cross-Modal Matching},\
   booktitle = {AAAI},\
   year      = {2024}\
 }
