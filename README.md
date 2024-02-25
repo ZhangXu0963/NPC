@@ -40,7 +40,7 @@ You can obtain your noisy dataset using `construct_noise.py`. And we also integr
 Since there are around 3%-20% incorrect annotations existing in the real-world dataset Conceptual Captions, we did not create noisy samples manually.
 
 #### Frozen Memory Bank
-We provide frozen the Memory Bank that appeared in the paper for the datasets with different noise ratios. If you want to update them during training, please use `get_memorybank.py`.
+We provide the frozen Memory Bank that appeared in the paper for the datasets with different noise ratios. If you want to update them during training, please use `get_memorybank.py`.
 
 #### Note!
 If you want to use your own noisy dataset for training, the Memory Bank should also be rebuilt. You can construct the noise dataset by `construct_noise.py`, and obtain the Memory Bank by `get_memorybank.py`.
