@@ -116,6 +116,14 @@ python main_CLIP.py --eval --resume /AAAI24-NPC/pre-trained_models/clip_coco_60.
                      <td>61.3</td><td>84.7</td><td>90.6</td> <td>44.7</td><td>72.2</td><td>81.7</td> 
    </tr>
 
+   <tr> <td rowspan="2", align="center">50%</td>
+        <td>CLIP</td> <td>69.0</td><td>90.6</td><td>95.8</td> <td>52.8</td><td>82.0</td><td>95.8</td> 
+                      <td>49.0</td><td>74.5</td><td>83.0</td> <td>33.7</td><td>59.1</td><td>70.1</td>
+   </tr>
+   <tr> <td>NPC</td> <td>78.5</td><td>95.0</td><td>98.1</td> <td>64.1</td><td>89.6</td><td>98.1</td> 
+                     <td>60.1</td><td>83.5</td><td>90.4</td> <td>43.6</td><td>71.1</td><td>80.9</td> 
+   </tr>
+
    <tr> <td rowspan="2", align="center">60%</td>
         <td>CLIP</td> <td>67.0</td><td>88.8</td><td>95.0</td> <td>49.7</td><td>79.6</td><td>95.0</td> 
                       <td>45.1</td><td>71.5</td><td>80.9</td> <td>30.9</td><td>55.6</td><td>66.9</td> 
