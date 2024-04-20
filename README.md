@@ -30,7 +30,7 @@ We unified the images' name format of the MSCOCO dataset for easier use. You can
 * **Flickr30K.**
 [(Flickr30K)](https://shannon.cs.illinois.edu/DenotationGraph/data/index.html).
 * **CC120K.**
-We tested the proposed method on the real-world dataset [Conceptual Captions](http://ai.google.com/research/ConceptualCaptions). Since the full dataset is too large, we randomly selected a subset of Conceptual Captions, named CC120K, including 118,851 images for training, 1,000 for validation, and 1,000 for testing. Since the file is too large to upload, you can drop me an email to get the whole dataset.
+We tested the proposed method on the real-world dataset [Conceptual Captions](http://ai.google.com/research/ConceptualCaptions). Since the full dataset is too large, we randomly selected a subset of Conceptual Captions, named CC120K, including 118,851 images for training, 1,000 for validation, and 1,000 for testing. You can download the dataset from [here](https://pan.baidu.com/s/152gNGgScGSMgSXu8i8o-dg) with the code "3ble".
 
 #### Construct Noisy Datasets
 We constructed noise by randomly shuffling some captions of the images. 
