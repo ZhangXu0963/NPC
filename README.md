@@ -187,16 +187,16 @@ python main_CLIP.py --eval --resume /AAAI24-NPC/pre-trained_models/clip_coco_60.
 
 ## Training
 **For training NPC**
-You can train a new model via the following command. Before training, you can read the `params.py` carefully to check your parameter setting.
+You can train a new model via the following command. Before training, you can read the `params.py` carefully to check your parameter setting. The `--num_anns` should be set to 5 for MSCOCO and Flickr30K, and 1 for CC120K.
 
 ```bash
-python main_NPC.py --batch_size 256 --epochs 5 --lr 2e-7 --vision_model ViT-B/32 --noise_ratio ${NOISE RATIO} --dataset_root ${YOUR PATH} --dataset coco --checkpoint_path ${YOUR PATH}
+python main_NPC.py --batch_size 256 --epochs 5 --lr 2e-7 --vision_model ViT-B/32 --noise_ratio ${NOISE RATIO} --num_anns ${5 or 1} --dataset_root ${YOUR PATH} --dataset coco --checkpoint_path ${YOUR PATH}
 ```
 
 **For training CLIP**
-Thanks to this [project](https://github.com/leolee99/CLIP_ITM) for providing a basic fine-tuning framework of CLIP. We have improved the code of the data loading process and the model evaluation. You can fine-tune the CLIP via the following command.
+Thanks to this [project](https://github.com/leolee99/CLIP_ITM) for providing a basic fine-tuning framework of CLIP. We have improved the code of the data loading process and the model evaluation. The `--num_anns` should be set to 5 for MSCOCO and Flickr30K, and 1 for CC120K. You can fine-tune the CLIP via the following command. 
 ```bash
-python main_CLIP.py --batch_size 256 --epochs 5 --lr 5e-7 --vision_model ViT-B/32 --noise_ratio ${NOISE RATIO} --dataset_root ${YOUR PATH} --dataset coco --checkpoint_path ${YOUR PATH}
+python main_CLIP.py --batch_size 256 --epochs 5 --lr 5e-7 --vision_model ViT-B/32 --noise_ratio ${NOISE RATIO} --num_anns ${5 or 1} --dataset_root ${YOUR PATH} --dataset coco --checkpoint_path ${YOUR PATH}
 ```
 
 ## Reference
