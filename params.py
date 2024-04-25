@@ -23,7 +23,7 @@ def parse_args():
                         help="Path to the dataset",)
     parser.add_argument("--num_anns", type=int, 
                         choices=[5, 1], #5 for MSCOCO and Flickr30K; 1 for CC120K
-                        default=1, 
+                        default=5, 
                         help="Number of annotations per image.")
     parser.add_argument("--dev_length", type=int, 
                         choices=[5000, 1000], # 5000 for MSCOCO and Flickr30K; 1000 for CC120K
