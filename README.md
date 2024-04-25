@@ -72,10 +72,10 @@ The final data directory tree should be:
 └── ...
 ```
 
-## Pre-trained Models and Evaluation
-You can download pre-trained NPC models and fine-tuned CLIP models from this [link](https://drive.google.com/drive/folders/12ZW5CGvzfDMU_NDlx44HZS3cyVAlgtq5?usp=sharing).
+## Models and Evaluation
+You can download the models fine-tuned using NPC(ours) and CLIP(our baseline) from this [link](https://drive.google.com/drive/folders/12ZW5CGvzfDMU_NDlx44HZS3cyVAlgtq5?usp=sharing).
 
-Save the pre-trained models in folder `./pre-trained_models`, and evaluate the models via the following command. For example, evaluate the models trained on MSCOCO with 60% noise.
+Save the models in folder `./pre-trained_models`, and evaluate the models via the following command. For example, evaluate the models trained on MSCOCO with 60% noise.
 
 ```bash
 python main_NPC.py --eval --resume /AAAI24-NPC/pre-trained_models/npc_coco_60.pt --dataset_root /AAAI24-NPC/dataset/MSCOCO --dataset coco
