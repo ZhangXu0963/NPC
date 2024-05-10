@@ -58,13 +58,13 @@ def get_mbank(dataloader, model, noise_ratio, dataset_name):
 
         arg_c = np.argwhere((prob>0.9) == True)
 
-        idx_c = text_index[arg_c].cpu()
+        clean_idx = text_index[arg_c].cpu()
 
         image_feature = image_feature.cpu().numpy()
         text_feature = text_feature.cpu().numpy()
 
-        clean_img = image_feature[idx_c]
-        clean_cap = text_feature[idx_c]
+        clean_img = image_feature[clean_idx]
+        clean_cap = text_feature[clean_idx]
 
     mbank_img_idx = {}
     mbank_txt_idx = {}
