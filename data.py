@@ -221,7 +221,7 @@ class LoadDataset(Dataset):
             mbank_txt = self.cap_token[mbank_t_idx]
             mbank_t2img = self.preprocess(Image.open(os.path.join(self.image_root, self.image_name[mbank_t_idx])))
             return image, text, idx, img_id, mbank_img, mbank_i2txt, mbank_txt, mbank_t2img
-        elif self.subset == 'trian_base':
+        elif self.subset == 'train_base':
             image = self.preprocess(Image.open(os.path.join(self.image_root, self.image_name[idx]))) # Image from PIL module
             text = self.cap_token[idx]
             img_id = self.images_id[idx]
