@@ -51,6 +51,8 @@ If you want to use your own noisy dataset for training, the Memory Bank should a
 * [CC120K](https://drive.google.com/drive/folders/1VULI0Pxa4Turimkndpb7LoXP34wEGmtS?usp=sharing)
 
 The final data directory tree should be:
+
+(**Fix a mistake**: the path has been defined as `dataset/${DATASET_NAME}/annotations/frozen_memory_bank` before, and the correct one should be `dataset/${DATASET_NAME}/annotations/memory_bank`. Thanks for correction！)
 ```
 ├── dataset/
 ├── ${DATASET_NAME}/
