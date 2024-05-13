@@ -55,7 +55,7 @@ The final data directory tree should be:
 ├── dataset/
 ├── ${DATASET_NAME}/
 |    ├── annotations/
-|    |   ├── frozen_memory_bank/
+|    |   ├── memory_bank/
 |    |   |   ├── ${noise_ratio}_mbank_img_idx.npy
 |    |   |   ├── ${noise_ratio}_mbank_txt_idx.npy
 |    |   |   └── ...
